@@ -101,6 +101,34 @@ module Platform
      }
    end
 
+   def self.macosx?
+     OS == :macosx
+   end
+
+   def self.unix?
+     OS == :unix
+   end
+
+   def self.windows?
+     OS == :windows
+   end
+
+   def self.unix_like?
+     macosx? || unix?
+   end
+
+   def self.impl_name
+     (IMPL == :unknown ? RUBY_PLATFORM : IMPL).to_s
+   end
+
+   def self.os_name
+     (OS == :unknown ? RUBY_PLATFORM : OS).to_s
+   end
+
+   def self.arch_name
+     (ARCH == :unknown ? RUBY_PLATFORM : ARCH).to_s
+   end
+
 end
 
 if __FILE__ == $0
