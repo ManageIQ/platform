@@ -46,15 +46,15 @@ module Platform
    # [ /.*/, :unknown, :unknown ] should always come last
    # whither AIX, SOLARIS, and the other unixen?
    PLATFORMS = [
-      [ /darwin/i,   :unix,      :macosx ],
+      [ /darwin/i,   :macosx,    :macosx ],
       [ /linux/i,    :unix,      :linux ],
       [ /freebsd/i,  :unix,      :freebsd ],
       [ /netbsd/i,   :unix,      :netbsd ],
-      [ /mswin/i,    :win32,     :mswin ],
-      [ /cygwin/i,   :hybrid,    :cygwin ],
-      [ /mingw/i,    :win32,     :mingw ],
-      [ /bccwin/i,   :win32,     :bccwin ],
-      [ /wince/i,    :win32,     :wince ],
+      [ /mswin/i,    :windows,   :mswin ],
+      [ /cygwin/i,   :windows,   :cygwin ],
+      [ /mingw/i,    :windows,   :mingw ],
+      [ /bccwin/i,   :windows,   :bccwin ],
+      [ /wince/i,    :windows,   :wince ],
       [ /vms/i,      :vms,       :vms ],
       [ /os2/i,      :os2,       :os2 ],
       [ /solaris/i,  :unix,      :solaris ],
