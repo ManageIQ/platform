@@ -1,3 +1,4 @@
+require 'rbconfig'
 #
 # platform.rb: naive platform detection for Ruby
 # author: Matt Mower <self@mattmower.com>
@@ -63,7 +64,7 @@ module Platform
       [ /hpux/i,     :unix,      :hpux ],
       [ /.*/,        :unknown,   :unknown ]
    ]
-   (*), OS, IMPL = PLATFORMS.find { |p| RUBY_PLATFORM =~ /#{p[0]}/ }
+   (*), OS, IMPL = PLATFORMS.find { |p| RbConfig::CONFIG['host_os'] =~ /#{p[0]}/ }
 
    # What about AMD, Turion, Motorola, etc..?
    ARCHS = [
@@ -77,8 +78,8 @@ module Platform
       [ /hppa/i,     :parisc ],
       [ /.*/,        :unknown ]
    ]
-   (*), ARCH = ARCHS.find { |a| RUBY_PLATFORM =~ /#{a[0]}/}
-   
+   (*), ARCH = ARCHS.find { |a| RbConfig::CONFIG['host_cpu'] =~ /#{a[0]}/}
+
    #
    # Execute the given block of code for a specific combination (or combinations)
    # of platform operating system, implementation, and architecture.
@@ -92,7 +93,7 @@ module Platform
        end
      end
    end
-   
+
    def self.description
      {
        :os => OS,
